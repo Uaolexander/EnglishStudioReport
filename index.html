@@ -99,7 +99,10 @@
         </form>
     </div>
     <script>
-        document.getElementById("generateBtn").addEventListener("click", generatePDF);
+        document.getElementById("generateBtn").addEventListener("click", function(event) {
+            event.preventDefault();
+            generatePDF();
+        });
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ format: 'a4' });
