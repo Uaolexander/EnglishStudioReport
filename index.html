@@ -131,7 +131,14 @@
             grades.forEach((subject, index) => {
                 doc.text(`${subject}: ${document.getElementById(subject.toLowerCase()).value || "N/A"} / 100`, 20, startY + (index * 10));
             });
-            doc.save(`${document.getElementById("student").value || "Student"}_Report.pdf`);
+            doc.setFont("times", "bold");
+doc.setFontSize(16);
+doc.text("Teacher's Comments:", 20, startY + (grades.length * 10) + 20);
+doc.setFont("times", "normal");
+doc.setFontSize(12);
+doc.text(document.getElementById("comments").value || "No comments", 20, startY + (grades.length * 10) + 30, { maxWidth: 170 });
+
+doc.save(`${document.getElementById("student").value || "Student"}_Report.pdf`);
         }
     </script>
 </body>
